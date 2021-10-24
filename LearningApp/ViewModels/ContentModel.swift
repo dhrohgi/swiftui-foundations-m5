@@ -20,7 +20,13 @@ class ContentModel: ObservableObject {
     @Published var currentLesson: Lesson?
     var currentLessonIndex = 0
     
+    // Current lesson explanation
+    @Published var lessonDescription = NSAttributedString()
+    
     var styleData: Data?
+    
+    // Current selected content and test
+    @Published var currentCountentSelected: Int?
     
     
     init() {
@@ -96,7 +102,11 @@ class ContentModel: ObservableObject {
         else {
             currentLessonIndex = 0
         }
+        
+        // Set the current lesson
         currentLesson = currentModule!.content.lessons[currentLessonIndex]
+        lessonDescription = addStyling(currentLesson!.explanation)
+        
     }
     
     func nextLesson() {
@@ -105,6 +115,7 @@ class ContentModel: ObservableObject {
         
         if currentLessonIndex < currentModule!.content.lessons.count {
             currentLesson = currentModule!.content.lessons[currentLessonIndex]
+            lessonDescription = addStyling(currentLesson!.explanation)
         }
         else {
             currentLessonIndex = 0
@@ -114,12 +125,40 @@ class ContentModel: ObservableObject {
     }
     
     
-    
-    
     func hasNextLesson() -> Bool {
         
         // return 뒤의 항목이 참이면 trun, 거짓이면 false 를 반납한다.
         return currentLessonIndex + 1 < currentModule!.content.lessons.count
+        
+    }
+    
+    private func addStyling(_ htmlString: String) -> NSAttributedString {
+        
+        var resultString = NSAttributedString()
+        var data = Data()
+        
+        if styleData != nil {
+            data.append(styleData!)
+        }
+        
+        data.append(Data(htmlString.utf8))
+        
+        // 옵셔녈 바인딩과 try? 키워드를 사용한 구문
+        if let attributedString = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil) {
+            resultString = attributedString
+        }
+        
+        
+        // Do-Try-Catch 를 사용한 구문
+//        do {
+//            let attributedString = try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+//            resultString = attributedString
+//        }
+//        catch {
+//            print(error)
+//        }
+        
+        return resultString
         
     }
     

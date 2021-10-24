@@ -22,6 +22,8 @@
 		95CCD7A0271F9CD6004ED55D /* ContentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CCD79F271F9CD6004ED55D /* ContentDetailView.swift */; };
 		95CCD7A5271FB5C1004ED55D /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95CCD7A4271FB5C1004ED55D /* AVKit.framework */; };
 		95CCD7A7271FBACE004ED55D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CCD7A6271FBACE004ED55D /* Constant.swift */; };
+		95CCD7DF27238EAA004ED55D /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CCD7DE27238EAA004ED55D /* CodeTextView.swift */; };
+		95CCD8192725BEE1004ED55D /* RectangleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CCD8182725BEE1004ED55D /* RectangleCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		95CCD79F271F9CD6004ED55D /* ContentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailView.swift; sourceTree = "<group>"; };
 		95CCD7A4271FB5C1004ED55D /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		95CCD7A6271FBACE004ED55D /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		95CCD7DE27238EAA004ED55D /* CodeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextView.swift; sourceTree = "<group>"; };
+		95CCD8182725BEE1004ED55D /* RectangleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,8 @@
 				95A09478271DF46B0056F8E2 /* ContentView.swift */,
 				95CCD79D271E3BF6004ED55D /* ContentViewRow.swift */,
 				95CCD79F271F9CD6004ED55D /* ContentDetailView.swift */,
+				95CCD7DE27238EAA004ED55D /* CodeTextView.swift */,
+				95CCD8182725BEE1004ED55D /* RectangleCard.swift */,
 				95A0947A271E103E0056F8E2 /* TestView.swift */,
 			);
 			path = Views;
@@ -230,7 +236,9 @@
 				95CCD79E271E3BF6004ED55D /* ContentViewRow.swift in Sources */,
 				95CCD7A7271FBACE004ED55D /* Constant.swift in Sources */,
 				95ADF1EE2713881900F4E1BF /* ContentModel.swift in Sources */,
+				95CCD8192725BEE1004ED55D /* RectangleCard.swift in Sources */,
 				95ADF23A271674E200F4E1BF /* Models.swift in Sources */,
+				95CCD7DF27238EAA004ED55D /* CodeTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

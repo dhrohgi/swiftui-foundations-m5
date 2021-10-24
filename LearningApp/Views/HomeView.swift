@@ -28,21 +28,23 @@ struct HomeView: View {
                             
                             VStack(spacing: 20) {
                                 
-                                NavigationLink {
-                                    ContentView()
+                                NavigationLink(
+                                    destination: ContentView()
                                         .onAppear {
                                             model.beginModule(module.id)
-                                        }
-                                } label: {
-                                    // Learning Card
-                                    HomeViewRow(
-                                        image: module.content.image,
-                                        title: "Learn \(module.category)",
-                                        description: module.content.description,
-                                        count: String(module.content.lessons.count) + " Lessons",
-                                        time: module.content.time)
-                                }
-
+                                        },
+                                    tag: module.id,
+                                    selection: $model.currentCountentSelected,
+                                    label: {
+                                        // Learning Card
+                                        HomeViewRow(
+                                            image: module.content.image,
+                                            title: "Learn \(module.category)",
+                                            description: module.content.description,
+                                            count: String(module.content.lessons.count) + " Lessons",
+                                            time: module.content.time)
+                                    })
+                                
                                 
                                 
                                 
