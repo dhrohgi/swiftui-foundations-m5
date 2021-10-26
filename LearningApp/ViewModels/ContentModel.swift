@@ -20,13 +20,18 @@ class ContentModel: ObservableObject {
     @Published var currentLesson: Lesson?
     var currentLessonIndex = 0
     
+    // Current question
+    @Published var currentQuestion: Question?
+    var currentQuestionIndex = 0
+    
     // Current lesson explanation
-    @Published var lessonDescription = NSAttributedString()
+    @Published var codeText = NSAttributedString()
     
     var styleData: Data?
     
     // Current selected content and test
-    @Published var currentCountentSelected: Int?
+    @Published var currentContentSelected: Int?
+    @Published var currentTestSelected: Int?
     
     
     init() {
@@ -105,7 +110,7 @@ class ContentModel: ObservableObject {
         
         // Set the current lesson
         currentLesson = currentModule!.content.lessons[currentLessonIndex]
-        lessonDescription = addStyling(currentLesson!.explanation)
+        codeText = addStyling(currentLesson!.explanation)
         
     }
     
@@ -115,7 +120,7 @@ class ContentModel: ObservableObject {
         
         if currentLessonIndex < currentModule!.content.lessons.count {
             currentLesson = currentModule!.content.lessons[currentLessonIndex]
-            lessonDescription = addStyling(currentLesson!.explanation)
+            codeText = addStyling(currentLesson!.explanation)
         }
         else {
             currentLessonIndex = 0
@@ -129,6 +134,22 @@ class ContentModel: ObservableObject {
         
         // return 뒤의 항목이 참이면 trun, 거짓이면 false 를 반납한다.
         return currentLessonIndex + 1 < currentModule!.content.lessons.count
+        
+    }
+    
+    func beginTest(_ moduleId: Int) {
+        
+        // Set the current module
+        beginModule(moduleId)
+        
+        // Set the current question index
+        currentQuestionIndex = 0
+        
+        // If there are questions, set the current question to the first one
+        if currentModule?.test.questions.count ?? 0 > 0 {
+            currentQuestion = currentModule!.test.questions[currentQuestionIndex]
+            codeText = addStyling(currentQuestion!.content)
+        }
         
     }
     

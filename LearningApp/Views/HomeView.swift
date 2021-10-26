@@ -29,13 +29,13 @@ struct HomeView: View {
                             VStack(spacing: 20) {
                                 
                                 NavigationLink(
-                                    destination: ContentView()
-                                        .onAppear {
-                                            model.beginModule(module.id)
-                                        },
                                     tag: module.id,
-                                    selection: $model.currentCountentSelected,
-                                    label: {
+                                    selection: $model.currentContentSelected) {
+                                        ContentView()
+                                            .onAppear {
+                                                model.beginModule(module.id)
+                                            }
+                                    } label: {
                                         // Learning Card
                                         HomeViewRow(
                                             image: module.content.image,
@@ -43,19 +43,25 @@ struct HomeView: View {
                                             description: module.content.description,
                                             count: String(module.content.lessons.count) + " Lessons",
                                             time: module.content.time)
-                                    })
+                                    }
                                 
+                                NavigationLink(
+                                    tag: module.id,
+                                    selection: $model.currentTestSelected) {
+                                        TestView()
+                                            .onAppear {
+                                                model.beginTest(module.id)
+                                            }
+                                    } label: {
+                                        // Test Card
+                                        HomeViewRow(
+                                            image: module.test.image,
+                                            title: "\(module.category) Test",
+                                            description: module.test.description,
+                                            count: String(module.test.questions.count) + " Questions",
+                                            time: module.test.time)
+                                    }
                                 
-                                
-                                
-                                
-                                // Test Card
-                                HomeViewRow(
-                                    image: module.test.image,
-                                    title: "\(module.category) Test",
-                                    description: module.test.description,
-                                    count: String(module.test.questions.count) + " Questions",
-                                    time: module.test.time)
                             }
                         }
                     }

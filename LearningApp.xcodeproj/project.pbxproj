@@ -123,9 +123,9 @@
 				95A09478271DF46B0056F8E2 /* ContentView.swift */,
 				95CCD79D271E3BF6004ED55D /* ContentViewRow.swift */,
 				95CCD79F271F9CD6004ED55D /* ContentDetailView.swift */,
+				95A0947A271E103E0056F8E2 /* TestView.swift */,
 				95CCD7DE27238EAA004ED55D /* CodeTextView.swift */,
 				95CCD8182725BEE1004ED55D /* RectangleCard.swift */,
-				95A0947A271E103E0056F8E2 /* TestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
