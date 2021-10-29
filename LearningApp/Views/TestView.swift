@@ -13,36 +13,31 @@ struct TestView: View {
     
     var body: some View {
         
-        ScrollView {
+        if model.currentQuestion != nil {
             
-            LazyVStack {
+            VStack {
                 
-                if model.currentModule != nil {
-                    
-                    VStack {
-                        
-                        // Question number
-                        Text("Question \(model.currentQuestionIndex + 1) of \(model.currentModule?.test.questions.count ?? 0)")
-                        
-                        
-                        // Question
-                        CodeTextView()
-                        
-                        // Answers
-                        
-                        
-                        //Button
-                        
-                    }
-                    .navigationTitle("\(model.currentModule?.category ?? "") Test")
-                }
-                else {
-                    ProgressView()
-                }
+                // Question number
+                Text("Question \(model.currentQuestionIndex + 1) of \(model.currentModule?.test.questions.count ?? 0)")
+                
+                
+                // Question
+                CodeTextView()
+                
+                // Answers
+                
+                
+                //Button
+                
             }
+            .navigationTitle("\(model.currentModule?.category ?? "") Test")
+        }
+        else {
+            ProgressView()
         }
     }
 }
+
 
 struct TestView_Previews: PreviewProvider {
     static var previews: some View {

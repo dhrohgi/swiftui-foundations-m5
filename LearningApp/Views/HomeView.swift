@@ -29,13 +29,13 @@ struct HomeView: View {
                             VStack(spacing: 20) {
                                 
                                 NavigationLink(
+                                    destination:
+                                        ContentView()
+                                        .onAppear(perform: {
+                                                model.beginModule(module.id)
+                                            }),
                                     tag: module.id,
                                     selection: $model.currentContentSelected) {
-                                        ContentView()
-                                            .onAppear {
-                                                model.beginModule(module.id)
-                                            }
-                                    } label: {
                                         // Learning Card
                                         HomeViewRow(
                                             image: module.content.image,
@@ -46,13 +46,13 @@ struct HomeView: View {
                                     }
                                 
                                 NavigationLink(
+                                    destination:
+                                        TestView()
+                                        .onAppear(perform: {
+                                                model.beginTest(module.id)
+                                            }),
                                     tag: module.id,
                                     selection: $model.currentTestSelected) {
-                                        TestView()
-                                            .onAppear {
-                                                model.beginTest(module.id)
-                                            }
-                                    } label: {
                                         // Test Card
                                         HomeViewRow(
                                             image: module.test.image,
@@ -60,8 +60,11 @@ struct HomeView: View {
                                             description: module.test.description,
                                             count: String(module.test.questions.count) + " Questions",
                                             time: module.test.time)
-                                    }
+                                   }
                                 
+                                NavigationLink(destination: EmptyView()) {
+                                    EmptyView()
+                                }
                             }
                         }
                     }

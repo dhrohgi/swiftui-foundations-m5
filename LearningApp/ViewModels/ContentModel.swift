@@ -133,7 +133,7 @@ class ContentModel: ObservableObject {
     func hasNextLesson() -> Bool {
         
         // return 뒤의 항목이 참이면 trun, 거짓이면 false 를 반납한다.
-        return currentLessonIndex + 1 < currentModule!.content.lessons.count
+        return (currentLessonIndex + 1 < currentModule!.content.lessons.count)
         
     }
     
