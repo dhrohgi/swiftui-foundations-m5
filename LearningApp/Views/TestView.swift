@@ -113,7 +113,8 @@ struct TestView: View {
             .navigationTitle("\(model.currentModule?.category ?? "") Test")
         }
         else {
-            ProgressView()
+            // If current questions is not nil, show the test result
+            TestResultView(numCorrect: numCorrect)
         }
     }
     
