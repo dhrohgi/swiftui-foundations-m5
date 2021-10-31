@@ -42,6 +42,7 @@ struct HomeViewRow: View {
                         .padding(.bottom, 20)
                     
                     HStack {
+                        // Number of lessons/questions
                         Image(systemName: "text.book.closed")
                             .resizable()
                             .frame(width: 15, height: 15)
@@ -50,6 +51,7 @@ struct HomeViewRow: View {
                         
                         Spacer()
                         
+                        // Time
                         Image(systemName: "clock")
                             .resizable()
                             .frame(width: 15, height: 15)
