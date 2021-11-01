@@ -61,11 +61,8 @@ struct HomeView: View {
                                             count: String(module.test.questions.count) + " Questions",
                                             time: module.test.time)
                                    }
-                                
-                                NavigationLink(destination: EmptyView()) {
-                                    EmptyView()
-                                }
                             }
+                            .padding(.bottom, 10)
                         }
                     }
                     .accentColor(.black)
