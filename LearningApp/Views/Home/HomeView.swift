@@ -32,9 +32,12 @@ struct HomeView: View {
                                     destination:
                                         ContentView()
                                         .onAppear(perform: {
+                                            model.getLessons(module: module) {
                                                 model.beginModule(module.id)
+                                            }
+                                                
                                             }),
-                                    tag: module.id,
+                                    tag: module.id.hash,
                                     selection: $model.currentContentSelected) {
                                         // Learning Card
                                         HomeViewRow(
@@ -49,9 +52,12 @@ struct HomeView: View {
                                     destination:
                                         TestView()
                                         .onAppear(perform: {
+                                            model.getQuestions(module: module) {
                                                 model.beginTest(module.id)
+                                            }
+                                                
                                             }),
-                                    tag: module.id,
+                                    tag: module.id.hash,
                                     selection: $model.currentTestSelected) {
                                         // Test Card
                                         HomeViewRow(
@@ -70,6 +76,16 @@ struct HomeView: View {
                 }
             }
             .navigationTitle("Get Started")
+            .onChange(of: model.currentContentSelected) { changedValue in
+                if changedValue == nil {
+                    model.currentModule = nil
+                }
+            }
+            .onChange(of: model.currentTestSelected) { changedValue in
+                if changedValue == nil {
+                    model.currentModule = nil
+                }
+            }
             
         }
         .navigationViewStyle(.stack)
